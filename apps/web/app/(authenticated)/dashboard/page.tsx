@@ -32,13 +32,13 @@ export default function DashboardPage() {
         <div className="space-y-8">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Dashboard</h1>
-                    <p className="text-slate-500 dark:text-slate-400 mt-1">
+                    <h1 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h1>
+                    <p className="text-muted-foreground mt-1">
                         Overview of your current support requests.
                     </p>
                 </div>
                 <Link href="/tickets/new">
-                    <Button size="lg" className="shadow-lg shadow-blue-500/20">
+                    <Button size="lg" className="shadow-lg shadow-primary/20">
                         <PlusCircle className="mr-2 h-4 w-4" />
                         Create New Ticket
                     </Button>
@@ -46,40 +46,40 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 shadow-lg">
+                <Card className="bg-primary text-primary-foreground border-0 shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-blue-100">Total Tickets</CardTitle>
+                        <CardTitle className="text-sm font-medium text-primary-foreground/80">Total Tickets</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-bold">{tickets.length}</div>
-                        <p className="text-xs text-blue-100 mt-1 opacity-80">All time</p>
+                        <div className="text-4xl font-bold text-primary-foreground">{tickets.length}</div>
+                        <p className="text-xs text-primary-foreground/80 mt-1 opacity-80">All time</p>
                     </CardContent>
                 </Card>
-                <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+                <Card className="bg-card text-card-foreground">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-500">Open Tickets</CardTitle>
+                        <CardTitle className="text-sm font-medium text-muted-foreground">Open Tickets</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-bold text-slate-900 dark:text-white">
+                        <div className="text-4xl font-bold text-foreground">
                             {tickets.filter(t => t.status === 'NEW' || t.status === 'OPEN').length}
                         </div>
-                        <p className="text-xs text-slate-400 mt-1">Awaiting action</p>
+                        <p className="text-xs text-muted-foreground mt-1">Awaiting action</p>
                     </CardContent>
                 </Card>
-                <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+                <Card className="bg-card text-card-foreground">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-500">Resolved</CardTitle>
+                        <CardTitle className="text-sm font-medium text-muted-foreground">Resolved</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-bold text-slate-900 dark:text-white">
+                        <div className="text-4xl font-bold text-foreground">
                             {tickets.filter(t => t.status === 'RESOLVED' || t.status === 'CLOSED').length}
                         </div>
-                        <p className="text-xs text-slate-400 mt-1">Completed</p>
+                        <p className="text-xs text-muted-foreground mt-1">Completed</p>
                     </CardContent>
                 </Card>
             </div>
 
-            <Card className="border-slate-200 dark:border-slate-800 shadow-sm">
+            <Card className="border-border shadow-sm">
                 <CardHeader>
                     <CardTitle>Recent Tickets</CardTitle>
                 </CardHeader>
@@ -88,31 +88,31 @@ export default function DashboardPage() {
                         {loading ? (
                             <div className="space-y-2">
                                 {[1, 2, 3].map(i => (
-                                    <div key={i} className="h-16 w-full bg-slate-100 dark:bg-slate-800 animate-pulse rounded-lg" />
+                                    <div key={i} className="h-16 w-full bg-muted animate-pulse rounded-lg" />
                                 ))}
                             </div>
                         ) : tickets.length > 0 ? (
                             tickets.map((ticket) => (
                                 <Link key={ticket.id} href={`/tickets/${ticket.id}`} className="block group">
-                                    <div className="flex items-center justify-between p-4 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-800 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900 transition-all duration-200">
+                                    <div className="flex items-center justify-between p-4 rounded-lg border border-border bg-card hover:bg-accent/50 transition-all duration-200">
                                         <div className="flex flex-col gap-1">
-                                            <span className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                            <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
                                                 {ticket.subject}
                                             </span>
-                                            <span className="text-xs text-slate-500">
+                                            <span className="text-xs text-muted-foreground">
                                                 Created {new Date(ticket.createdAt).toLocaleDateString()} &middot; ID: #{ticket.id}
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-3">
-                                            <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${ticket.priority === 'HIGH' ? 'bg-red-100 text-red-700' :
-                                                ticket.priority === 'MEDIUM' ? 'bg-orange-100 text-orange-700' :
-                                                    'bg-blue-100 text-blue-700'
+                                            <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${ticket.priority === 'HIGH' ? 'bg-destructive/10 text-destructive' :
+                                                    ticket.priority === 'MEDIUM' ? 'bg-orange-500/10 text-orange-500' :
+                                                        'bg-blue-500/10 text-blue-500'
                                                 }`}>
                                                 {ticket.priority}
                                             </span>
-                                            <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${ticket.status === 'NEW' ? 'bg-emerald-100 text-emerald-700' :
-                                                ticket.status === 'CLOSED' ? 'bg-slate-100 text-slate-600' :
-                                                    'bg-indigo-100 text-indigo-700'
+                                            <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${ticket.status === 'NEW' ? 'bg-emerald-500/10 text-emerald-500' :
+                                                    ticket.status === 'CLOSED' ? 'bg-muted text-muted-foreground' :
+                                                        'bg-primary/10 text-primary'
                                                 }`}>
                                                 {ticket.status}
                                             </span>
@@ -121,9 +121,9 @@ export default function DashboardPage() {
                                 </Link>
                             ))
                         ) : (
-                            <div className="text-center py-10 text-slate-500">
+                            <div className="text-center py-10 text-muted-foreground">
                                 <p>No tickets found.</p>
-                                <Link href="/tickets/new" className="text-blue-600 hover:underline mt-2 inline-block">
+                                <Link href="/tickets/new" className="text-primary hover:underline mt-2 inline-block">
                                     Create your first ticket
                                 </Link>
                             </div>

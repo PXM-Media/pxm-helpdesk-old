@@ -8,6 +8,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
+import { toast } from "sonner"
+
 export default function LoginPage() {
     const router = useRouter()
     const [email, setEmail] = useState("")
@@ -27,30 +29,37 @@ export default function LoginPage() {
             if (res.ok) {
                 const data = await res.json()
                 localStorage.setItem('token', data.access_token)
+                toast.success("Welcome back!", {
+                    description: "You have successfully logged in."
+                })
                 router.push('/dashboard')
             } else {
-                alert('Login failed. Please check your credentials.')
+                toast.error("Login failed", {
+                    description: "Please check your email and password."
+                })
             }
         } catch (error) {
-            alert('An error occurred. Please try again.')
+            toast.error("An error occurred", {
+                description: "Please try again later."
+            })
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+        <div className="flex h-screen w-full items-center justify-center bg-background relative overflow-hidden">
             {/* Background Decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none opacity-50 mix-blend-multiply dark:mix-blend-screen animate-blob" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-40 animate-blob" />
 
-            <Card className="w-full max-w-md z-10 shadow-2xl border-slate-200 dark:border-slate-800 backdrop-blur-sm bg-white/80 dark:bg-slate-900/80">
+            <Card className="w-full max-w-sm z-10 shadow-2xl border-border backdrop-blur-sm bg-card/80">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-3xl font-bold tracking-tight text-center">Welcome back</CardTitle>
-                    <p className="text-center text-slate-500 dark:text-slate-400">
+                    <CardTitle className="text-2xl font-bold tracking-tight text-center text-foreground">Welcome back</CardTitle>
+                    <p className="text-center text-muted-foreground">
                         Enter your credentials to access your account
                     </p>
                 </CardHeader>
-                <CardContent className="grid gap-4 pt-4">
+                <CardContent className="grid gap-4">
                     <form onSubmit={handleLogin} className="grid gap-4">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
@@ -81,8 +90,8 @@ export default function LoginPage() {
                     </form>
                 </CardContent>
                 <CardFooter>
-                    <p className="text-sm text-center w-full text-slate-500">
-                        Don't have an account? <Link href="/register" className="font-semibold text-primary hover:underline underline-offset-4">Sign up</Link>
+                    <p className="text-sm text-center w-full text-muted-foreground">
+                        Don&apos;t have an account? <Link href="/register" className="font-semibold text-primary hover:underline underline-offset-4">Sign up</Link>
                     </p>
                 </CardFooter>
             </Card>

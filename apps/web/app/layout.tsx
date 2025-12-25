@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     description: "Self-hosted helpdesk solution",
 };
 
+import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider"
 
 // ... imports
@@ -23,11 +24,12 @@ export default function RootLayout({
             <body className={inter.className}>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
+                    defaultTheme="dark"
                     enableSystem
                     disableTransitionOnChange
                 >
                     {children}
+                    <Toaster richColors position="top-center" theme="system" />
                 </ThemeProvider>
             </body>
         </html>

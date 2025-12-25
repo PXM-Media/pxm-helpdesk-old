@@ -33,11 +33,11 @@ export default function AuthenticatedLayout({
             .catch(() => setBrandName("PXM-Helpdesk"));
     }, []);
 
-    const navItemClass = (path: string) => `flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all hover:bg-slate-100 dark:hover:bg-slate-800 ${pathname === path ? 'bg-slate-100 text-primary dark:bg-slate-800' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50'}`
+    const navItemClass = (path: string) => `flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground ${pathname === path ? 'bg-secondary text-secondary-foreground' : 'text-muted-foreground hover:text-foreground'}`
 
     return (
-        <div className="flex min-h-screen w-full bg-slate-50 dark:bg-slate-950">
-            <aside className="fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-slate-900 px-4 py-6 md:flex shadow-sm">
+        <div className="flex min-h-screen w-full bg-background">
+            <aside className="fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-card px-4 py-6 md:flex shadow-sm">
                 <div className="mb-8 px-2 flex items-center gap-3">
                     <div className="bg-primary/10 p-1.5 rounded-lg">
                         {brandLogo ? (
@@ -47,7 +47,7 @@ export default function AuthenticatedLayout({
                             <Globe className="h-6 w-6 text-primary" />
                         )}
                     </div>
-                    <span className="text-lg font-bold tracking-tight">{brandName}</span>
+                    <span className="text-lg font-bold tracking-tight text-foreground">{brandName}</span>
                 </div>
 
                 <nav className="flex flex-col space-y-1 flex-1">
@@ -65,7 +65,7 @@ export default function AuthenticatedLayout({
                         Profile
                     </Link> */}
 
-                    <div className="mt-8 mb-2 px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    <div className="mt-8 mb-2 px-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                         Admin Tools
                     </div>
                     <Link href="/admin/forms" className={navItemClass('/admin/forms')}>
@@ -87,7 +87,7 @@ export default function AuthenticatedLayout({
                 </nav>
 
                 <div className="mt-auto">
-                    <Button variant="outline" className="w-full justify-start gap-3 border-slate-200 text-slate-600 hover:text-red-600 hover:bg-red-50 dark:border-slate-800 dark:text-slate-400" onClick={handleLogout}>
+                    <Button variant="ghost" className="w-full justify-start gap-3 text-muted-foreground hover:text-destructive hover:bg-destructive/10" onClick={handleLogout}>
                         <LogOut className="h-4 w-4" />
                         Log out
                     </Button>

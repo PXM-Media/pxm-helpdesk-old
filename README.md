@@ -1,3 +1,8 @@
+> [!CAUTION]
+> **PROJECT DISCONTINUED**
+>
+> This project has been permanently discontinued and is no longer maintained due to excessive technical debt and persistent stability issues.
+
 # PXM-Helpdesk Project Documentation
 
 ## Prerequisites

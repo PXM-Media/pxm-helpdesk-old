@@ -8,6 +8,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
+import { toast } from "sonner"
+
 export default function RegisterPage() {
     const router = useRouter()
     const [email, setEmail] = useState("")
@@ -27,27 +29,33 @@ export default function RegisterPage() {
             })
 
             if (res.ok) {
-                alert('Account created! Please login.')
+                toast.success("Account created successfully!", {
+                    description: "You can now log in with your credentials."
+                })
                 router.push('/login')
             } else {
-                alert('Registration failed. Please try again.')
+                toast.error("Registration failed", {
+                    description: "Please check your details and try again."
+                })
             }
         } catch (error) {
-            alert('An error occurred.')
+            toast.error("An error occurred", {
+                description: "Please try again later."
+            })
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+        <div className="flex h-screen w-full items-center justify-center bg-background relative overflow-hidden">
             {/* Background Decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none opacity-50 mix-blend-multiply dark:mix-blend-screen animate-blob" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-40 animate-blob" />
 
-            <Card className="w-full max-w-md z-10 shadow-2xl border-slate-200 dark:border-slate-800 backdrop-blur-sm bg-white/80 dark:bg-slate-900/80">
+            <Card className="w-full max-w-md z-10 shadow-2xl border-border backdrop-blur-sm bg-card/80">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-3xl font-bold tracking-tight text-center">Create account</CardTitle>
-                    <p className="text-center text-slate-500 dark:text-slate-400">
+                    <CardTitle className="text-3xl font-bold tracking-tight text-center text-foreground">Create account</CardTitle>
+                    <p className="text-center text-muted-foreground">
                         Join us to get support and track your tickets
                     </p>
                 </CardHeader>
@@ -92,7 +100,7 @@ export default function RegisterPage() {
                     </form>
                 </CardContent>
                 <CardFooter>
-                    <p className="text-sm text-center w-full text-slate-500">
+                    <p className="text-sm text-center w-full text-muted-foreground">
                         Already have an account? <Link href="/login" className="font-semibold text-primary hover:underline underline-offset-4">Sign in</Link>
                     </p>
                 </CardFooter>

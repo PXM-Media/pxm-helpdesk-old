@@ -26,9 +26,10 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col relative overflow-hidden">
+
+        <main className="min-h-screen bg-background flex flex-col relative overflow-hidden">
             {/* Background Decoration */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none opacity-40 mix-blend-multiply dark:mix-blend-screen animate-blob" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/20 rounded-full blur-[100px] pointer-events-none opacity-40 mix-blend-multiply dark:mix-blend-screen animate-blob" />
 
             {/* Navbar */}
             <header className="w-full px-8 py-6 flex justify-between items-center z-10">
@@ -41,12 +42,12 @@ export default function Home() {
                             <Globe className="w-6 h-6 text-primary" />
                         )}
                     </div>
-                    <span className={`font-bold text-xl tracking-tight transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+                    <span className={`font-bold text-xl tracking-tight text-foreground transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
                         {brandName}
                     </span>
                 </div>
                 <Link href="/login">
-                    <Button variant="ghost" className="gap-2">
+                    <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-primary">
                         <ShieldCheck className="w-4 h-4" />
                         Agent Login
                     </Button>
@@ -56,37 +57,37 @@ export default function Home() {
             {/* Hero Section */}
             <div className="flex-1 flex flex-col items-center justify-center p-6 text-center z-10 pb-32">
                 <div className="max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium dark:bg-blue-900/40 dark:text-blue-300">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
                         Support Center Online
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
+                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground drop-shadow-sm">
                         How can we <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500">
                             help you today?
                         </span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Search our comprehensive knowledge base for answers or submit a ticket to get personalized support from our team.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
                         <Link href="/portal/kb">
-                            <Button size="lg" className="h-14 px-8 text-lg shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 hover:-translate-y-0.5">
+                            <Button size="lg" className="h-14 px-8 text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-0.5">
                                 <Book className="mr-2 h-5 w-5" />
                                 Browse Knowledge Base
                             </Button>
                         </Link>
 
-                        <div className="text-slate-400 text-sm font-medium px-2">or</div>
+                        <div className="text-muted-foreground text-sm font-medium px-2">or</div>
 
                         <Link href="/login?redirect=/tickets/new">
-                            <Button size="lg" variant="outline" className="h-14 px-8 text-lg bg-white/50 backdrop-blur-sm hover:bg-white/80 border-slate-200 dark:border-slate-700 dark:bg-slate-800/50">
+                            <Button size="lg" variant="outline" className="h-14 px-8 text-lg bg-card/50 backdrop-blur-sm hover:bg-card/80 border-border text-foreground hover:text-primary">
                                 Submit a Ticket
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
@@ -96,7 +97,7 @@ export default function Home() {
             </div>
 
             {/* Footer */}
-            <footer className="py-8 text-center text-slate-500 text-sm z-10">
+            <footer className="py-8 text-center text-muted-foreground text-sm z-10">
                 <p>&copy; {new Date().getFullYear()} {brandName}. All rights reserved.</p>
             </footer>
         </main>
