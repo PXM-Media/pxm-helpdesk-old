@@ -27,7 +27,7 @@ import { Setting } from './settings/setting.entity';
             username: process.env.DB_USER || 'helpdesk',
             password: process.env.DB_PASSWORD || 'helpdeskpassword',
             database: process.env.DB_NAME || 'helpdesk',
-            entities: [User, Ticket, Form, Comment, Automation, Article, Category],
+            entities: [User, Ticket, Form, Comment, Automation, Article, Category, Setting],
             synchronize: true,
         }),
         DatabaseModule,
