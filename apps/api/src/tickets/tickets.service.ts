@@ -48,4 +48,10 @@ export class TicketsService {
     }
 
     async findOne(id: number): Promise<Ticket> {
+        return this.ticketsRepository.findOne({ where: { id }, relations: ['requester', 'assignee', 'comments', 'comments.author'] });
+    }
+
+    async update(id: number, updateTicketDto: any): Promise<Ticket> {
+        await this.ticketsRepository.update(id, updateTicketDto);
+        return this.findOne(id);
     }

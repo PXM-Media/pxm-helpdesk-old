@@ -20,4 +20,3 @@ import { AutomationsModule } from '../automations/automations.module';
     exports: [TicketsService, CommentsService],
 })
 export class TicketsModule { }
-```

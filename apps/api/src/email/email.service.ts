@@ -91,4 +91,3 @@ export class EmailService {
         this.logger.log('Checking emails (Mock implementation due to missing deps in dev environment)...');
     }
 }
-```

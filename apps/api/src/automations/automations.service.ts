@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Automation, AutomationEvent } from './automation.entity';
+export { AutomationEvent };
 import { Ticket } from '../tickets/ticket.entity';
 
 @Injectable()
