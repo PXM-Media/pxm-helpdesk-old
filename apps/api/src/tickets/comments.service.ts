@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Comment } from './comment.entity';
@@ -10,6 +10,7 @@ export class CommentsService {
     constructor(
         @InjectRepository(Comment)
         private commentsRepository: Repository<Comment>,
+        @Inject(forwardRef(() => TicketsService))
         private ticketsService: TicketsService,
     ) { }
 
