@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import { UserRole } from '../users/user.entity';
 import * as bcrypt from 'bcryptjs';
 
 @Injectable()
@@ -37,6 +38,7 @@ export class AuthService {
             passwordHash: hashedPassword,
             firstName,
             lastName,
+            role: UserRole.USER,
             isActive: true
         });
     }
