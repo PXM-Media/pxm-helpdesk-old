@@ -1,5 +1,5 @@
 {
-  "name": "helpdesk-monorepo",
+  "name": "pxmhelpdesk",
   "version": "0.0.1",
   "private": true,
   "workspaces": [

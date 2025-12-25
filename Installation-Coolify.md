@@ -1,6 +1,6 @@
-# How to Deploy on Coolify
+# How to Deploy PXM-Helpdesk on Coolify
 
-This guide explains how to deploy the Helpdesk application (NestJS API + Next.js Frontend + Database stack) using [Coolify](https://coolify.io).
+This guide explains how to deploy the PXM-Helpdesk application (NestJS API + Next.js Frontend + Database stack) using [Coolify](https://coolify.io).
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ Ensure your repository has the correct structure:
 
 1.  Click **"+ New Resource"** inside the environment.
 2.  Select **"Git Repository"** (Public or Private).
-3.  Choose the repository containing this Helpdesk code.
+3.  Choose the repository containing this PXM-Helpdesk code.
     - *If private, you'll need to configure a GitHub App or Deploy Key in Coolify first.*
 
 ## Step 4: Configure the Build Pack

@@ -1,4 +1,4 @@
-# Helpdesk Project Documentation
+# PXM-Helpdesk Project Documentation
 
 ## Prerequisites
 Ensure you have the following installed on your system:

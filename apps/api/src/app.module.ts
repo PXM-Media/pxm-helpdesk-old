@@ -15,6 +15,8 @@ import { KnowledgeBaseModule } from './knowledge-base/knowledge-base.module';
 import { Article, Category } from './knowledge-base/kb.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ReportingModule } from './reporting/reporting.module';
+import { SettingsModule } from './settings/settings.module';
+import { Setting } from './settings/setting.entity';
 
 @Module({
     imports: [
@@ -36,7 +38,8 @@ import { ReportingModule } from './reporting/reporting.module';
         EmailModule,
         AutomationsModule,
         KnowledgeBaseModule,
-        ReportingModule
+        ReportingModule,
+        SettingsModule
     ],
     controllers: [],
     providers: [],
