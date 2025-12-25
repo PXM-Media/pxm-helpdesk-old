@@ -22,8 +22,8 @@ export class TicketsService {
             ...createTicketDto,
             requester: user,
             status: TicketStatus.NEW
-        }) as Ticket;
-        const savedTicket = (await this.ticketsRepository.save(ticket)) as Ticket;
+        }) as unknown as Ticket;
+        const savedTicket = (await this.ticketsRepository.save(ticket)) as unknown as Ticket;
 
         // Send confirmation email
         await this.emailService.sendEmail(
