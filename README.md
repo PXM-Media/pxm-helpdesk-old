@@ -3,6 +3,9 @@
 >
 > This project has been permanently discontinued and is no longer maintained due to excessive technical debt and persistent stability issues.
 
+> [!NOTE]
+> New maintained Project can be found here: [PXM-Helpdesk-Remastered](https://github.com/PXM-Media/PXM-Helpdesk-Remastered)
+
 # PXM-Helpdesk Project Documentation
 
 ## Prerequisites
